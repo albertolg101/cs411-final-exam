@@ -24,3 +24,13 @@
         --restart unless-stopped
         -p 4444:4444
         {{ image }}
+
+    - name: Wait for app health check
+      ansible.builtin.uri:
+        url: http://127.0.0.1:4444/
+        method: GET
+        status_code: 200
+      register: healthcheck
+      retries: 12
+      delay: 5
+      until: healthcheck.status == 200

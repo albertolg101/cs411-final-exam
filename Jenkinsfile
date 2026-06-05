@@ -35,7 +35,7 @@ pipeline {
                     keyFileVariable: 'SSH_KEY',
                     usernameVariable: 'SSH_USER'
                 )]) {
-                    sh 'ansible-playbook -i "$DOCKER_DEPLOY_HOST," --private-key=$SSH_KEY --user=$SSH_USER -e image=$IMAGE playbook.yml'
+                    sh 'ansible-playbook -i "$DOCKER_DEPLOY_HOST," --private-key=$SSH_KEY --user=$SSH_USER -e image=$IMAGE docker-playbook.yml'
                 }
             }
         }
