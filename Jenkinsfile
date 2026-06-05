@@ -8,9 +8,15 @@ pipeline {
     }
 
     stages {
+        stage('Test') {
+            steps {
+                sh "docker build --target test -t ${IMAGE}-test ."
+            }
+        }
+
         stage('Build') {
             steps {
-                sh "docker build -t ${IMAGE} ."
+                sh "docker build --target prod -t ${IMAGE} ."
             }
         }
 
