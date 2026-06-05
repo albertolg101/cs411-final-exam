@@ -1,0 +1,10 @@
+services:
+  myapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: cs411-final-exam:latest
+    container_name: myapp
+    ports:
+      - "4444:4444"
+    restart: unless-stopped
